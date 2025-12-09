@@ -1,0 +1,267 @@
+/* ---------------------------------------------------
+   GLOBAL LAYOUT
+--------------------------------------------------- */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f8f6fa;
+  color: #222;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---------------------------------------------------
+   TOP BAR
+--------------------------------------------------- */
+
+.topbar {
+  background: #ffffff;
+  padding: 12px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.user-area button {
+  padding: 8px 14px;
+  background: #e53935;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------
+   LOGIN PAGE INTERACTIVE (NEW)
+--------------------------------------------------- */
+
+.center-flex {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.auth-card {
+  width: 520px;
+  padding: 40px;
+  background: #ffffffcc;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px);
+  animation: slideIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: #333;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 14px 14px;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  background: transparent;
+  outline: none;
+  transition: 0.25s ease;
+  font-size: 16px;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  background: white;
+  padding: 0 6px;
+  color: #888;
+  font-size: 15px;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.input-box input:focus {
+  border-color: #6ba0ff;
+  box-shadow: 0 0 8px rgba(107,160,255,0.4);
+}
+
+.input-box input:focus + label,
+.input-box input:not(:placeholder-shown) + label {
+  top: -6px;
+  font-size: 13px;
+  color: #3b73dd;
+}
+
+/* Buttons */
+
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.auth-buttons button {
+  padding: 10px 22px;
+  background: #3b82f6;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-buttons button:hover {
+  background: #1d4ed8;
+}
+
+.auth-buttons button::after {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: 0.4s ease;
+}
+
+.auth-buttons button:active::after {
+  width: 160px;
+  height: 160px;
+  opacity: 1;
+  left: var(--x);
+  top: var(--y);
+}
+
+/* ---------------------------------------------------
+   DASHBOARD STYLING (RESTORED)
+--------------------------------------------------- */
+
+.container {
+  padding: 30px;
+}
+
+.grid.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.summary-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.summary-card {
+  flex: 1;
+  background: #f0f3ff;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.08);
+}
+
+.summary-value {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.activities-list .activity-card {
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #f9f9fb;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Buttons inside dashboard */
+button {
+  cursor: pointer;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.delete-btn {
+  background: #e53935 !important;
+}
+
+.delete-btn:hover {
+  background: #b71c1c !important;
+}
+
+/* Timeline */
+.timeline {
+  height: 60px;
+  position: relative;
+  background: #f1f4ff;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.timeline .slot {
+  position: absolute;
+  height: 100%;
+  border-radius: 6px;
+  padding-left: 6px;
+  color: #fff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin: 40px 0;
+  color: #555;
+}

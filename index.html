@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Time Tracker — Interactive</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Firebase Compat SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="brand" id="btnHome">AI Time Tracker</div>
+    <div id="userArea" class="user-area hidden">
+      <span id="userEmail"></span>
+      <button id="btnLogout">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ---------- LOGIN UI (UPDATED INTERACTIVE VERSION) ---------- -->
+    <section id="authSection" class="center-flex">
+      <div class="auth-card">
+        <h2 class="auth-title">Welcome — Sign in</h2>
+
+        <div class="input-box">
+          <input id="authEmail" type="email" required placeholder=" " />
+          <label>Email</label>
+        </div>
+
+        <div class="input-box">
+          <input id="authPassword" type="password" required placeholder=" " />
+          <label>Password</label>
+        </div>
+
+        <div class="auth-buttons">
+          <button id="btnLogin">Login</button>
+          <button id="btnSignup">Sign Up</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- APP SECTION (UNCHANGED) ---------- -->
+    <section id="appSection" class="hidden">
+      <div class="grid two">
+        <div class="card">
+          <h2>Track Your Day</h2>
+
+          <div class="row">
+            <label for="datePicker">Select Date:</label>
+            <input id="datePicker" type="date">
+          </div>
+
+          <div class="summary-row">
+            <div class="summary-card">
+              <div class="summary-title">Remaining Minutes</div>
+              <div id="remaining" class="summary-value">1440</div>
+            </div>
+
+            <div class="summary-card">
+              <div class="summary-title">Total Hours</div>
+              <div id="totalHours" class="summary-value">0h</div>
+            </div>
+          </div>
+
+          <h3>Add / Edit Activity</h3>
+
+          <div class="row wrap form-row">
+            <input id="activityTitle" placeholder="Activity title" />
+            <input id="activityCategory" placeholder="Category (Work, Sleep...)" />
+            <input id="activityMinutes" type="number" placeholder="Minutes" min="1" />
+            <input id="activityStart" type="time" title="Start time (optional)" />
+            <button id="btnAddUpdate">Add Activity</button>
+            <button id="btnCancelEdit" class="hidden">Cancel Edit</button>
+          </div>
+
+          <h3>Activities</h3>
+          <div id="activitiesList" class="activities-list"></div>
+        </div>
+
+        <!-- RIGHT SIDE PANEL: Analytics -->
+        <div class="card">
+          <h2>Analytics</h2>
+
+          <div class="controls row">
+            <button id="btnAnalyse" class="primary">Analyse</button>
+            <button id="btnExport">Export PNG</button>
+
+            <div class="filter-box">
+              <label>Filters:</label>
+              <div id="filters" class="filters"></div>
+            </div>
+          </div>
+
+          <div id="analyticsContainer">
+            <div id="analyticsChartContainer">
+              <canvas id="analyticsChart"></canvas>
+            </div>
+
+            <div id="barChartContainer" class="mt-12">
+              <canvas id="barChart"></canvas>
+            </div>
+          </div>
+
+          <div id="timelineCard" class="timeline-card mt-12">
+            <h4>Timeline (24-hour)</h4>
+            <div id="timeline" class="timeline"></div>
+          </div>
+
+          <div class="ai-box mt-12">
+            <h4>AI Summary</h4>
+            <div id="aiSummary" class="ai-summary"></div>
+
+            <div class="row mt-8">
+              <button id="btnCopySummary">Copy Summary</button>
+              <button id="btnImproveSummary">Improve (AI)</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="firebase-init.js"></script>
+  <script src="app.js"></script>
+
+  <!-- RIPPLES SCRIPT -->
+  <script>
+    document.querySelectorAll('.auth-buttons button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const rect = btn.getBoundingClientRect();
+        btn.style.setProperty("--x", e.clientX - rect.left + "px");
+        btn.style.setProperty("--y", e.clientY - rect.top + "px");
+      });
+    });
+
+    // 🔄 REFRESH PAGE WHEN CLICKING "AI Time Tracker"
+    document.getElementById("btnHome").addEventListener("click", () => {
+      window.location.reload();
+    });
+  </script>
+
+</body>
+</html>
