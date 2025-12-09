@@ -1,10 +1,10 @@
 # AI-Powered Daily Time Tracking & Analytics Dashboard
 
 ## 🔗 Live Demo
-https://drive.google.com/file/d/1icqRIV7kBLlciCiXEHIzlmr5gAt0qdKx/view?usp=sharing
+https://sayalimore03.github.io/time-tracker-ai/
 
 ## 🎥 Video Walkthrough
-https://drive.google.com/file/d/XXXXX/view?usp=sharing
+https://drive.google.com/file/d/1icqRIV7kBLlciCiXEHIzlmr5gAt0qdKx/view?usp=sharing
 
 ## 📌 Overview
 A web-based time-tracking system that allows users to log daily activities, track time usage, and visualize their day using charts and timelines.
