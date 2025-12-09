@@ -44,17 +44,19 @@ body {
 }
 
 /* ---------------------------------------------------
-   LOGIN PAGE INTERACTIVE (NEW)
+   LOGIN PAGE
 --------------------------------------------------- */
 
 .center-flex {
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  padding: 20px;
 }
 
 .auth-card {
   width: 520px;
+  max-width: 95%;
   padding: 40px;
   background: #ffffffcc;
   border-radius: 18px;
@@ -84,7 +86,7 @@ body {
 
 .input-box input {
   width: 100%;
-  padding: 14px 14px;
+  padding: 14px;
   border: 2px solid #dcdcdc;
   border-radius: 10px;
   background: transparent;
@@ -119,11 +121,11 @@ body {
 }
 
 /* Buttons */
-
 .auth-buttons {
   display: flex;
   justify-content: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .auth-buttons button {
@@ -136,34 +138,15 @@ body {
   font-size: 15px;
   position: relative;
   overflow: hidden;
+  min-width: 100px;
 }
 
 .auth-buttons button:hover {
   background: #1d4ed8;
 }
 
-.auth-buttons button::after {
-  content: "";
-  position: absolute;
-  width: 0px;
-  height: 0px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: 0.4s ease;
-}
-
-.auth-buttons button:active::after {
-  width: 160px;
-  height: 160px;
-  opacity: 1;
-  left: var(--x);
-  top: var(--y);
-}
-
 /* ---------------------------------------------------
-   DASHBOARD STYLING (RESTORED)
+   DASHBOARD
 --------------------------------------------------- */
 
 .container {
@@ -183,14 +166,11 @@ body {
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-h2 {
-  margin-top: 0;
-}
-
 .summary-row {
   display: flex;
   gap: 12px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .summary-card {
@@ -202,12 +182,6 @@ h2 {
   box-shadow: inset 0 0 6px rgba(0,0,0,0.08);
 }
 
-.summary-value {
-  font-size: 24px;
-  font-weight: 700;
-  margin-top: 4px;
-}
-
 .activities-list .activity-card {
   padding: 12px;
   margin-bottom: 12px;
@@ -216,7 +190,7 @@ h2 {
   border: 1px solid #ddd;
 }
 
-/* Buttons inside dashboard */
+/* Buttons */
 button {
   cursor: pointer;
   border: none;
@@ -265,3 +239,86 @@ button:hover {
   margin: 40px 0;
   color: #555;
 }
+
+/* ---------------------------------------------------
+   RESPONSIVE DESIGN
+--------------------------------------------------- */
+
+/* --- Tablets (<= 900px) --- */
+@media (max-width: 900px) {
+  .grid.two {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .auth-card {
+    padding: 30px;
+  }
+}
+
+/* --- Mobile (<= 600px) --- */
+@media (max-width: 600px) {
+
+  .topbar {
+    padding: 10px 16px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .auth-card {
+    padding: 25px;
+  }
+
+  .auth-title {
+    font-size: 22px;
+  }
+
+  .input-box input {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .summary-row {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .timeline {
+    height: 50px;
+  }
+}
+
+/* --- Small Phones (<= 420px) --- */
+@media (max-width: 420px) {
+  .auth-card {
+    padding: 20px;
+  }
+
+  .auth-title {
+    font-size: 20px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
